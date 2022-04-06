@@ -1,8 +1,9 @@
 {
-  "name": "octokit-records",
+  "name": "gists-records",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A watch record list base on github gists and octokit",
+  "main": "n/a",
   "scripts": {
     "dev": "next"
   },
