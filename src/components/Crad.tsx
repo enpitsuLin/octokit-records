@@ -22,8 +22,8 @@ const Score: React.FC<Pick<Props, "score">> = ({ score }) => {
 const renderType = (type: Props["type"]) => {
   const typeMap = {
     movie: "电影",
-    tv: "剧",
-    book: "书",
+    tv: "剧集",
+    book: "书籍",
     anime: "动漫"
   };
   return typeMap[type] ?? "未知";
@@ -39,7 +39,7 @@ export const Card: React.FC<Props> = (props) => {
 
   return (
     <section className="pb-10 relative before:(border-l-2 inset-y-0 -left-30px absolute content-open-quote) first:before:top-1 last:before:bottom-10 ">
-      <p className="text-xs mb-2 relative sm:text-base sm:mb-3">
+      <p className="text-sm mb-2 relative sm:text-base sm:mb-3">
         {new Date(props.date).toLocaleDateString()}
 
         <i className="rounded-full bg-gray-200 h-4 transform top-1/2 -left-9 w-4 translate-y-[-50%] absolute" />
@@ -51,19 +51,19 @@ export const Card: React.FC<Props> = (props) => {
             <span>（{props.year}）</span>
           </p>
 
-          <p className="text-xs sm:text-base">
+          <p className="text-base md:text-sm">
             <span>评分：</span>
             <Score score={props.score} />
           </p>
 
-          <p className="text-xs sm:text-base">
+          <p className="text-base md:text-sm">
             <span>分类：</span>
             {renderType(props.type)}
           </p>
 
-          <div className="bg-white mt-4 text-xs leading-2 sm:text-base">{props.comment}</div>
+          <div className="mt-4 text-sm md:text-x text-gray-300">{props.comment}</div>
         </div>
-        <div className="rounded-md w-114px overflow-hidden sm:rounded-xl">
+        <div className="rounded-xl w-114px overflow-hidden md:rounded-md">
           <Image
             src={props.cover}
             layout="fixed"
