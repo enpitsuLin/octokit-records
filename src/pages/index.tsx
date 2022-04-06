@@ -26,7 +26,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      records: records
+      records: records.sort((a, b) => {
+        return new Date(a.date) < new Date(b.date) ? 1 : -1;
+      })
     }
   };
 };
