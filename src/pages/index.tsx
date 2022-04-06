@@ -1,5 +1,6 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticProps } from "next";
 import { Card } from "../components/Crad";
+import Layout from "../components/Layout";
 import { getRecords } from "../lib/get-records";
 import { RecordItem } from "../types/records";
 
@@ -7,7 +8,9 @@ interface Props {
   records: RecordItem[];
 }
 
-const filterTruthy = Boolean as any as <T>(x: T | false) => x is T;
+function filterTruthy<T>(x: T | false): x is T {
+  return Boolean(x);
+}
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const { data } = await getRecords();
@@ -30,17 +33,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const Home: React.FC<Props> = ({ records }) => {
   return (
-    <div className="mx-10 md:(max-w-150 mx-auto)">
-      <h1 className="flex justify-between items-center my-8 md:my-20">
-        <span className="text-5xl">我看过的</span>
-        <span className="text-lg">电影 / 动漫 / 剧 / 书</span>
-      </h1>
-      <div>
-        {records.map((record) => (
-          <Card {...record} key={record.title} />
-        ))}
-      </div>
-    </div>
+    <Layout>
+      {records.map((record) => (
+        <Card {...record} key={record.title} />
+      ))}
+    </Layout>
   );
 };
 
