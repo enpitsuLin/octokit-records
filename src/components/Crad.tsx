@@ -7,7 +7,7 @@ type Props = RecordItem;
 const Score: React.FC<Pick<Props, "score">> = ({ score }) => {
   switch (score) {
     case 1:
-      return <big className="font-bold text-black-500">🍅 烂</big>;
+      return <big className="font-bold text-gray-500">🍅 烂</big>;
     case 2:
       return <big className="font-bold text-green-500">🥱 无聊</big>;
     case 3:
@@ -61,9 +61,9 @@ export const Card: React.FC<Props> = (props) => {
             {renderType(props.type)}
           </p>
 
-          <div className="mt-4 text-sm md:text-x text-gray-300">{props.comment}</div>
+          <div className="mt-4 text-sm md:text-x text-gray-700 dark:text-gray-300">{props.comment}</div>
         </div>
-        <div className="rounded-xl w-114px overflow-hidden md:rounded-md">
+        <div className="rounded-xl w-87px overflow-hidden md:rounded-md">
           <Image
             src={props.cover}
             layout="fixed"
