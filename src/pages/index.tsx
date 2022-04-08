@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { Card } from "../components/Crad";
 import Layout from "../components/Layout";
 import { getRecords } from "../lib/get-records";
@@ -12,7 +12,7 @@ function filterTruthy<T>(x: T | false): x is T {
   return Boolean(x);
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const { data } = await getRecords();
   const records = Object.keys(data.files)
     .map((key) => {
