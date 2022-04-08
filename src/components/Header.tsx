@@ -9,7 +9,8 @@ const Header: React.FC = () => {
       </div>
       <button
         onClick={() => {
-          setTheme((theme) => (theme == "dark" ? "light" : "dark"));
+          if (theme == "dark") setTheme("light");
+          else setTheme("dark");
         }}
       >
         {theme == "dark" ? <IconMoon /> : <IconSun />}
