@@ -1,44 +1,17 @@
-import { GetServerSideProps } from "next";
 import { Card } from "../components/Crad";
 import Layout from "../components/Layout";
-import { getRecords } from "../lib/get-records";
-import { RecordItem } from "../types/records";
+import useSWR from "swr";
+import { ApiResponse } from "./api/get-records";
 
-interface Props {
-  records: RecordItem[];
-}
+const fetcher = (input: RequestInfo, init?: RequestInit) => fetch(input, init).then((res) => res.json());
 
-function filterTruthy<T>(x: T | false): x is T {
-  return Boolean(x);
-}
-
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const { data } = await getRecords();
-  const records = Object.keys(data.files)
-    .map((key) => {
-      try {
-        return JSON.parse(data.files[key].content) as RecordItem;
-      } catch (error) {
-        return false;
-      }
-    })
-    .filter(filterTruthy);
-
-  return {
-    props: {
-      records: records.sort((a, b) => {
-        return new Date(a.date) < new Date(b.date) ? 1 : -1;
-      })
-    }
-  };
-};
-
-const Home: React.FC<Props> = ({ records }) => {
+const Home: React.FC = () => {
+  const { data, error } = useSWR<ApiResponse>("/api/get-records", fetcher);
   return (
     <Layout>
-      {records.map((record) => (
-        <Card {...record} key={record.title} />
-      ))}
+      {!data && <div>loading</div>}
+      {data && data.data.map((record) => <Card {...record} key={record.title} />)}
+      {error && <div>failed to load</div>}
     </Layout>
   );
 };

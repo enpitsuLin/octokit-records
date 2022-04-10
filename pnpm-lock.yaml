@@ -9,6 +9,7 @@ specifiers:
   next-themes: ^0.1.1
   react: ^18.0.0
   react-dom: ^18.0.0
+  swr: ^1.2.2
   typescript: ^4.6.3
   windicss: ^3.5.1
   windicss-webpack-plugin: ^1.6.7
@@ -19,6 +20,7 @@ dependencies:
   next-themes: 0.1.1_c0abbb53577d424fe320649841fdc7d4
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
+  swr: 1.2.2_react@18.0.0
 
 devDependencies:
   '@types/node': 17.0.23
@@ -600,6 +602,14 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+    dependencies:
+      react: 18.0.0
+    dev: false
+
+  /swr/1.2.2_react@18.0.0:
+    resolution: {integrity: sha512-ky0BskS/V47GpW8d6RU7CPsr6J8cr7mQD6+do5eky3bM0IyJaoi3vO8UhvrzJaObuTlGhPl2szodeB2dUd76Xw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.0.0
     dev: false
