@@ -1,13 +1,15 @@
-const WindiCSSWebpackPlugin = require("windicss-webpack-plugin");
+const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 /** @type {import('next').NextConfig} */
 const config = {
   webpack(config) {
-    config.plugins.push(new WindiCSSWebpackPlugin());
-    return config;
+    config.plugins.push(new WindiCSSWebpackPlugin())
+    return config
   },
   images: {
-    domains: ["img1.doubanio.com", "img2.doubanio.com", "img3.doubanio.com", "img9.doubanio.com", "m.media-amazon.com"]
+    domains: ['"m.media-amazon.com"'].concat(
+      Array.from({ length: 10 }, (_, i) => i + 1).map((i) => `img${i}.doubanio.com`)
+    )
   }
-};
-module.exports = config;
+}
+module.exports = config
