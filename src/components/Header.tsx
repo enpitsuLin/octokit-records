@@ -11,12 +11,12 @@ const Header: React.FC = () => {
       <button
         onClick={() => {
           if (theme === 'system') {
-            if (systemTheme == 'dark')
+            if (systemTheme === 'dark')
               setTheme('light')
             else setTheme('dark')
           }
           else {
-            if (theme == 'dark')
+            if (theme === 'dark')
               setTheme('light')
             else setTheme('dark')
           }
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
 }
 export default Header
 
-const ThemeIcon: React.FC<{ type: string }> = ({ type }) => {
+function ThemeIcon({ type }: { type?: string }) {
   if (type === 'dark')
     return <IconMoon />
   else return <IconSun />
