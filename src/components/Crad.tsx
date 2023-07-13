@@ -1,81 +1,87 @@
-import Image from "next/image";
-import { useState } from "react";
-import { RecordItem } from "../types/records";
+import Image from 'next/image'
+import { useState } from 'react'
+import type { RecordItem } from '../types/records'
 
-type Props = RecordItem;
+type Props = RecordItem
 
-const Score: React.FC<Pick<Props, "score">> = ({ score }) => {
+const Score: React.FC<Pick<Props, 'score'>> = ({ score }) => {
   switch (score) {
     case 1:
-      return <big className="font-bold text-gray-500">🍅 烂</big>;
+      return <big className="font-bold text-gray-500">🍅 烂</big>
     case 2:
-      return <big className="font-bold text-green-500">🥱 无聊</big>;
+      return <big className="font-bold text-green-500">🥱 无聊</big>
     case 3:
-      return <big className="font-bold text-blue-500">🤔 还行</big>;
+      return <big className="font-bold text-blue-500">🤔 还行</big>
     case 4:
-      return <big className="font-bold text-violet-500">🤩 值得一看</big>;
+      return <big className="font-bold text-violet-500">🤩 值得一看</big>
     case 5:
-      return <big className="font-bold text-orange-500">💯 神作！</big>;
+      return <big className="font-bold text-orange-500">💯 神作！</big>
   }
-};
+}
 
-const renderType = (type: Props["type"]) => {
+function renderType(type: Props['type']) {
   const typeMap = {
-    movie: "电影",
-    tv: "剧集",
-    book: "书籍",
-    anime: "动漫"
-  };
-  return typeMap[type] ?? "未知";
-};
+    movie: '电影',
+    tv: '剧集',
+    book: '书籍',
+    anime: '动漫',
+  }
+  return typeMap[type] ?? '未知'
+}
 
 export const Card: React.FC<Props> = (props) => {
-  const [loading, setLoading] = useState(true);
-  const loadingClasses =
-    "backdrop-filter backdrop-grayscale backdrop-blur-lg transform scale-110 hover:opacity-75 duration-300 ease-in-out";
-  const loadedClasses =
-    "backdrop-filter backdrop-grayscale-0 backdrop-blur-0 transform scale-100 hover:opacity-75 duration-300 ease-in-out";
-  const classes = loading ? loadingClasses : loadedClasses;
+  const [loading, setLoading] = useState(true)
 
   return (
-    <section className="pb-10 relative before:border-#e5e7eb before:border-l-2 before:inset-y-0 before:-left-30px before:absolute before:content-empty first:before:top-1 last:before:bottom-10">
+    <section
+      before="content-empty border-#e5e7eb border-l-2 inset-y-0 -left-30px absolute"
+      className="pb-10 relative first:before:top-1 last:before:bottom-10"
+    >
       <p className="text-sm mb-2 relative sm:text-base sm:mb-3">
         {new Date(props.date).toLocaleDateString()}
-
-        <i className="rounded-full bg-gray-200 h-4 transform top-1/2 -left-9 w-4 translate-y-[-50%] absolute" />
+        <i rounded="full"
+          bg="gray-200"
+          className="h-4 transform top-1/2 -left-9 w-4 -translate-y-1/2 absolute"
+        />
       </p>
-      <div className="flex justify-between">
+      <div flex="~ justify-between">
         <div className="flex-1 mr-2">
-          <p className="text-md mb-2 leading-6 sm:mb-3 sm:text-2xl ">
+          <p leading-6
+            text="md sm:2xl"
+            mb="2 sm:3">
             {props.title}
             <span>（{props.year}）</span>
           </p>
 
-          <p className="text-base md:text-sm">
+          <p text="base md:sm">
             <span>评分：</span>
             <Score score={props.score} />
           </p>
 
-          <p className="text-base md:text-sm">
+          <p text="base md:sm">
             <span>分类：</span>
             {renderType(props.type)}
           </p>
 
-          <div className="mt-4 text-sm md:text-x text-gray-700 dark:text-gray-300">{props.comment}</div>
+          <div text="sm md:base gray-700 dark:gray-300"
+            className="mt-4">{props.comment}</div>
         </div>
-        <div className="rounded-xl w-87px overflow-hidden md:rounded-md">
+        <div
+          rounded="xl md:md"
+          className="w-87px overflow-hidden"
+        >
           <Image
             src={props.cover}
-            layout="fixed"
             width={87}
             height={116}
-            objectFit="cover"
             alt={props.title}
-            className={classes}
+            className={[
+              loading ? 'backdrop-grayscale backdrop-blur-lg' : 'backdrop-grayscale-0 backdrop-blur-0', 'backdrop-filter hover:opacity-75 duration-300 ease-in-out',
+            ].join(' ')}
             onLoadingComplete={() => setLoading(false)}
           />
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
