@@ -1,4 +1,4 @@
-import "windi.css";
+import "./style.css";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import Head from "next/head";
