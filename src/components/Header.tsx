@@ -44,7 +44,7 @@ const Header: React.FC = () => {
 
           <span
             className={clsx(
-              dark ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100',
+              'dark:opacity-100 dark:ease-in dark:duration-200 opacity-0 ease-out duration-100',
               'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity',
             )}
             aria-hidden="true"
