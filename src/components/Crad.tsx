@@ -32,13 +32,13 @@ const renderType = (type: Props["type"]) => {
 export const Card: React.FC<Props> = (props) => {
   const [loading, setLoading] = useState(true);
   const loadingClasses =
-    "backdrop-filter backdrop-grayscale backdrop-blur-lg transform  scale-110 hover:opacity-75 duration-300 ease-in-out";
+    "backdrop-filter backdrop-grayscale backdrop-blur-lg transform scale-110 hover:opacity-75 duration-300 ease-in-out";
   const loadedClasses =
-    "backdrop-filter backdrop-grayscale-0 backdrop-blur-0 transform  scale-100 hover:opacity-75 duration-300 ease-in-out";
+    "backdrop-filter backdrop-grayscale-0 backdrop-blur-0 transform scale-100 hover:opacity-75 duration-300 ease-in-out";
   const classes = loading ? loadingClasses : loadedClasses;
 
   return (
-    <section className="pb-10 relative before:(border-l-2 inset-y-0 -left-30px absolute content-open-quote) first:before:top-1 last:before:bottom-10 ">
+    <section className="pb-10 relative before:border-#e5e7eb before:border-l-2 before:inset-y-0 before:-left-30px before:absolute before:content-empty first:before:top-1 last:before:bottom-10">
       <p className="text-sm mb-2 relative sm:text-base sm:mb-3">
         {new Date(props.date).toLocaleDateString()}
 
