@@ -18,10 +18,13 @@
     "swr": "^2.2.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.39.7",
+    "@next/eslint-plugin-next": "^13.4.9",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.7",
     "@unocss/postcss": "^0.53.5",
+    "eslint": "^8.44.0",
     "postcss": "^8.4.25",
     "typescript": "^5.1.6",
     "unocss": "^0.53.5"
