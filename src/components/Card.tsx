@@ -31,13 +31,15 @@ function renderType(type: Props['type']) {
 export const Card: React.FC<Props> = (props) => {
   return (
     <section
-      before="content-empty border-#e5e7eb border-l-2 inset-y-0 -left-30px absolute"
+      m="x-10"
+      before="content-empty border-white border-l-2 inset-y-0 -left-29px absolute"
       className="pb-10 relative first:before:top-1 last:before:bottom-10"
     >
       <p className="text-sm mb-2 relative sm:text-base sm:mb-3">
         {new Date(props.date).toLocaleDateString()}
-        <i rounded="full"
-          bg="gray-200"
+        <i
+          rounded="full"
+          bg="white"
           className="h-4 transform top-1/2 -left-9 w-4 -translate-y-1/2 absolute"
         />
       </p>
