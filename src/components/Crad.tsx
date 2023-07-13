@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useState } from 'react'
 import type { RecordItem } from '../types/records'
 
 type Props = RecordItem
@@ -30,8 +29,6 @@ function renderType(type: Props['type']) {
 }
 
 export const Card: React.FC<Props> = (props) => {
-  const [loading, setLoading] = useState(true)
-
   return (
     <section
       before="content-empty border-#e5e7eb border-l-2 inset-y-0 -left-30px absolute"
@@ -75,10 +72,7 @@ export const Card: React.FC<Props> = (props) => {
             width={87}
             height={116}
             alt={props.title}
-            className={[
-              loading ? 'backdrop-grayscale backdrop-blur-lg' : 'backdrop-grayscale-0 backdrop-blur-0', 'backdrop-filter hover:opacity-75 duration-300 ease-in-out',
-            ].join(' ')}
-            onLoadingComplete={() => setLoading(false)}
+            className='backdrop-filter hover:opacity-75 duration-300 ease-in-out'
           />
         </div>
       </div>
