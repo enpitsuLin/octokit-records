@@ -2,9 +2,12 @@
 const config = {
   images: {
     domains: ['"m.media-amazon.com"'].concat(
-      Array.from({ length: 10 }, (_, i) => i + 1).map((i) => `img${i}.doubanio.com`)
-    )
-  }
+      Array.from({ length: 10 }, (_, i) => i + 1).map(i => `img${i}.doubanio.com`),
+    ),
+  },
+  experimental: {
+    serverActions: true,
+  },
 }
 
 export default config

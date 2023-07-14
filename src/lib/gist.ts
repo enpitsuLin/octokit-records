@@ -1,3 +1,4 @@
+'use server'
 import { Octokit } from '@octokit/core'
 import type { RecordItem } from '@/types/records'
 
@@ -10,6 +11,29 @@ const octokit = new Octokit({ auth: process.env.GIT_TOKEN })
 
 function filterTruthy<T>(x: T | false): x is T {
   return Boolean(x)
+}
+
+export async function createRecord(data: RecordItem) {
+  const files = await octokit
+    .request('GET /gists/{gist_id}', { gist_id: process.env.GIST_ID! })
+    .then((res) => {
+      if (res.status === 200 && res.data.files)
+        return Object.fromEntries(Object.entries(res.data.files).filter(([_key, value]) => !!value)) as Record<string, NonNullable<typeof res.data.files[string]>>
+
+      return {}
+    })
+
+  const response = await octokit.request('PATCH /gists/{gist_id}', {
+    gist_id: process.env.GIST_ID!,
+    files: {
+      ...files,
+      [`${data.title}.json`]: {
+        content: JSON.stringify(data),
+      },
+    },
+  })
+
+  return response
 }
 
 export async function getRecord(): Promise<RecordItem[]> {
