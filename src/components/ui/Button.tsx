@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 type ButtonProps = {
   [Prop in keyof typeof variants]?: keyof typeof variants[Prop]
@@ -35,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button {...rest}
         ref={ref}
-        className={clsx(
+        className={cn(
           'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
           variantClassName,
           sizeClassName,
