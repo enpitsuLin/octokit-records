@@ -1,6 +1,5 @@
 import { getRecord } from '@/lib/gist'
 import { Card } from '@/components/Card'
-import { AddRecordForm } from '@/components/AddRecord'
 
 const Home: React.FC = async () => {
   // const { data, error } = useSWR<ApiResponse>('/api/get-records', fetcher)
@@ -12,7 +11,6 @@ const Home: React.FC = async () => {
       p="x-8 y-12" m="-auto y-20"
       className="backdrop-filter backdrop-blur-lg"
     >
-      <AddRecordForm />
       {
         data.map(i => <Card {...i} />)
       }

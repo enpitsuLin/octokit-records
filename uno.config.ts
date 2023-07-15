@@ -4,6 +4,7 @@ import {
   presetIcons,
   presetUno,
 } from 'unocss'
+import { animatedUno } from 'animated-unocss'
 import type { Theme } from 'unocss/preset-uno'
 
 export default defineConfig<Theme>({
@@ -57,5 +58,6 @@ export default defineConfig<Theme>({
         'vertical-align': 'middle',
       },
     }),
+    animatedUno(),
   ],
 })
