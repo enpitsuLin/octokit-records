@@ -2,14 +2,14 @@
 import { useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import clsx from 'clsx'
-import { Input } from './ui/Input'
-import { Textarea } from './ui/Textarea'
-import { Label } from './ui/Label'
-import { Calendar } from './ui/Calendar'
+import { Textarea } from './ui/textarea'
+import { Label } from './ui/label'
+import { Calendar } from './ui/calendar'
+import { Input } from './ui/input'
+import { Button } from './ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { createRecord } from '@/lib/gist'
 import type { RecordItem } from '@/types/records'
-import { Button } from '@/components/ui/Button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover'
 
 export function AddRecordForm() {
   const [isPending, startTransition] = useTransition()
@@ -41,9 +41,23 @@ export function AddRecordForm() {
           {errors.type && <p className="text-sm text-destructive">Type is required.</p>}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2" flex="~ col">
           <Label htmlFor="year">Year</Label>
-          <Input {...register('year', { required: true })} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant='outline'
+                className={clsx(
+                  'w-[280px] justify-start text-left font-normal',
+                  'text-muted-foreground',
+                )}
+              >Open popover</Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80" side="top">
+
+              <Input {...register('year', { required: true })} />
+            </PopoverContent>
+          </Popover>
           {errors.year && <p className="text-sm text-destructive">Year is required.</p>}
         </div>
 
@@ -59,8 +73,22 @@ export function AddRecordForm() {
           {errors.score && <p className="text-sm text-destructive">Score is required.</p>}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2" flex="~ col">
           <Label htmlFor="date">Date</Label>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant='outline'
+                className={clsx(
+                  'w-[280px] justify-start text-left font-normal',
+                  'text-muted-foreground',
+                )}
+              >Open popover</Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80" side="top">
+              <Calendar />
+            </PopoverContent>
+          </Popover>
           <Input {...register('date', { required: true })} />
           {errors.date && <p className="text-sm text-destructive">Date is required.</p>}
         </div>
@@ -70,20 +98,6 @@ export function AddRecordForm() {
           <Textarea {...register('comment')} />
         </div>
 
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              variant='outline'
-              className={clsx(
-                'w-[280px] justify-start text-left font-normal',
-                'text-muted-foreground',
-              )}
-            >Open popover</Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-80" side="top">
-            <Calendar />
-          </PopoverContent>
-        </Popover>
         <Button type="submit" disabled={isPending}>
           Submit
         </Button>

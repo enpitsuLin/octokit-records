@@ -1,5 +1,5 @@
-import { AddRecordForm } from '@/components/AddRecord'
+import { RecordForm } from '@/components/RecordForm'
 
 export default function Page() {
-  return <AddRecordForm />
+  return <RecordForm />
 }

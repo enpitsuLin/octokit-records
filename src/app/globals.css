@@ -49,3 +49,7 @@
 * {
   border-color: hsl(var(--border));
 }
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+}

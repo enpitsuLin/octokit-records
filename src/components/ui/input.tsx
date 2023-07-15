@@ -1,13 +1,15 @@
-import { type DetailedHTMLProps, type InputHTMLAttributes, forwardRef } from 'react'
+import * as React from 'react'
+
 import { cn } from '@/lib/utils'
 
-type InputProps = Partial<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>>
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (props, ref) => {
-    const { className, ...rest } = props
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
     return (
-      <input {...rest}
+      <input
+        type={type}
         ref={ref}
         p="x-3 y-2" flex="~" w-full=""
         border="~ rounded input file:0" bg="background file:transparent "
@@ -17,7 +19,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           'h-10 file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
           className,
         )}
+        {...props}
       />
     )
   },
 )
+Input.displayName = 'Input'
+
+export { Input }

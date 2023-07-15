@@ -1,7 +1,7 @@
-import { type DetailedHTMLProps, type TextareaHTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 
-type TextareaProps = Partial<DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>>
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
