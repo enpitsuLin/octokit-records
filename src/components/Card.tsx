@@ -45,8 +45,8 @@ export const Card: React.FC<Props> = (props) => {
       </p>
       <div flex="~ justify-between">
         <div className="flex-1 mr-2">
-          <p leading-6
-            text="md sm:2xl"
+          <p leading-6=""
+            text="base sm:2xl"
             mb="2 sm:3">
             {props.title}
             <span>（{props.year}）</span>
