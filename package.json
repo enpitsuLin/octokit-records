@@ -12,27 +12,27 @@
   "dependencies": {
     "@octokit/core": "^5.0.0",
     "@react-spring/three": "^9.7.3",
-    "@react-three/drei": "^9.78.2",
-    "@react-three/fiber": "^8.13.5",
+    "@react-three/drei": "^9.80.0",
+    "@react-three/fiber": "^8.13.6",
     "camera-controls": "^2.7.0",
-    "clsx": "^1.2.1",
-    "next": "^13.4.9",
+    "clsx": "^2.0.0",
+    "next": "^13.4.12",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.154.0"
+    "three": "^0.155.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.7",
-    "@next/eslint-plugin-next": "^13.4.9",
-    "@types/node": "^20.4.2",
-    "@types/react": "^18.2.14",
+    "@antfu/eslint-config": "^0.39.8",
+    "@next/eslint-plugin-next": "^13.4.12",
+    "@types/node": "^20.4.5",
+    "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "@types/three": "^0.154.0",
-    "@unocss/postcss": "^0.53.5",
-    "eslint": "^8.44.0",
-    "postcss": "^8.4.25",
+    "@unocss/postcss": "^0.54.0",
+    "eslint": "^8.46.0",
+    "postcss": "^8.4.27",
     "typescript": "^5.1.6",
-    "unocss": "^0.53.5"
+    "unocss": "^0.54.0"
   }
 }
