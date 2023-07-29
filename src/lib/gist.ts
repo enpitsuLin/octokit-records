@@ -1,3 +1,4 @@
+/* eslint-disable n/prefer-global/process */
 import { Octokit } from '@octokit/core'
 import type { RecordItem } from '@/types/records'
 
